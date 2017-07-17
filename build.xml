@@ -40,7 +40,7 @@
 		<pathelement location="lib/hamcrest-core-1.3.jar"/>
 		<pathelement location="/bin"/>
 		 </classpath>
-	<test name="src.TestTask3" todir="${root}${dist}">
+	<test name="TestTask3" todir="src">
 	<formatter type="plain" usefile="true" />
 	</test>
 	</junit>
