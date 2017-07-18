@@ -62,14 +62,17 @@
 	  	    <pathelement location="lib/svnjavahl-svnant-1.3.0.jar"/>
 	  	  </path>
 	  	  <taskdef resource="org/tigris/subversion/svnant/svnantlib.xml" classpathref="svn_class_path"/>
+	    <svn username="" password="">
+	      <checkout url="${svn_path}" destPath="src" revision="1"/>
+	    </svn>
 	      <antcall target="build">
+	      <param name="file_name" value="r1"/>
 	      </antcall>
 	    <svn username="" password="">
-	      <status path="${svn_path}" revisionProperty="svn_version"/>
-	      <checkout url="svn_path" destPath="r1" revision="1"/>
-	      <checkout url="svn_path" destPath="r2" revision="2"/>
-	      <checkout url="svn_path" destPath="r3" revision="3"/>
-	      <checkout url="svn_path" destPath="r4" revision="4"/>
+	      <checkout url="${svn_path}" destPath="src" revision="4"/>
 	    </svn>
+	      <antcall target="build">
+	      <param name="file_name" value="r2"/>
+	      </antcall>
 	  </target>
 </project>
