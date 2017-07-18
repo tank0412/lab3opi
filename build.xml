@@ -27,12 +27,12 @@
     </target>
 	<target name="build" depends="compile">
 	 <jar destfile="lab3.jar">
-	 <fileset dir="bin" />
-	<manifest>
-	<attribute name="Main-Class" value="Task3"/>
-	<attribute name="Version" value="1.0"/>
-	</manifest>
-	 </jar>
+		<manifest>
+		<attribute name="Main-Class" value="Task3"/>
+		<attribute name="Version" value="1.0"/>
+		</manifest>
+		 <fileset dir="bin"/>	
+		 </jar>
 	</target>
 	<target name="test" depends="build">
 	<junit fork="true" haltonfailure="yes">
@@ -64,7 +64,10 @@
 	  	  <taskdef resource="org/tigris/subversion/svnant/svnantlib.xml" classpathref="svn_class_path"/>
 	    <svn username="" password="">
 	      <status path="${svn_path}" revisionProperty="svn_version"/>
+	      <checkout url="file:///d://LAB3OPI/trunc" destPath="r1" revision="1"/>
+	      <checkout url="file:///d://LAB3OPI/trunc" destPath="r2" revision="2"/>
+	      <checkout url="file:///d://LAB3OPI/trunc" destPath="r3" revision="3"/>
+	      <checkout url="file:///d://LAB3OPI/trunc" destPath="r4" revision="4"/>
 	    </svn>
-	    <echo message="Current version: ${svn_version}"/>
 	  </target>
 </project>
