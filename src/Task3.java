@@ -29,14 +29,18 @@ public static Stack mystack = new Stack();
     mystack.push(new Double(3));
     mystack.push(new Double(3));
     mystack.push(new Double(-5));
+    mystack.push(new Double(-4));
+    mystack.push(new Double(-3));
     mystack.push(new Double(4));
     mystack.push(new Double(5));
     mystack.push(new Double(-5));
     mystack.push(new Double(4));
     mystack.push(new Double(1));
     mystack.push(new Double(-2));
+    mystack.push(new Double(-3));
+    mystack.push(new Double(-3));
     
-    for(int i = 0; i < 6; ++ i) {
+    for(int i = 0; i < 7; ++ i) {
     	{
     		Mark.Dojob();
     		if(Figura.Include())
