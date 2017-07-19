@@ -40,7 +40,7 @@ public static Stack mystack = new Stack();
     mystack.push(new Double(-3));
     mystack.push(new Double(-3));
     
-    for(int i = 0; i < 7; ++ i) {
+    for(int i = 0; i < 8; ++ i) {
     	{
     		Mark.Dojob();
     		if(Figura.Include())
