@@ -5,19 +5,6 @@
     <path id="Lab3_OPI.classpath">
         <pathelement location="${bin}"/>
     </path>
-    <target name="clean">
-        <delete dir="${bin}"/>
-    	<delete dir="r1"/>
-        <delete dir="r2"/>
-        <delete dir="r3"/>
-    	<delete dir="r4"/>
-    	<delete file="src.jar"/>
-    	<delete file="r1.jar"/>
-    	<delete file="r2.jar"/>
-    	<delete file="r3.jar"/>
-    	<delete file="r4.jar"/>
-    	<delete file="${zip_name}"/>
-    </target>
     <target name="compile">
         <mkdir dir="${bin}"/>
         <copy includeemptydirs="false" todir="bin">
@@ -40,6 +27,19 @@
 		 <fileset dir="${bin}"/>	
 		 </jar>
 	</target>
+    <target name="clean">
+        <delete dir="${bin}"/>
+    	<delete dir="r1"/>
+        <delete dir="r2"/>
+        <delete dir="r3"/>
+    	<delete dir="r4"/>
+    	<delete file="src.jar"/>
+    	<delete file="r1.jar"/>
+    	<delete file="r2.jar"/>
+    	<delete file="r3.jar"/>
+    	<delete file="r4.jar"/>
+    	<delete file="${zip_name}"/>
+    </target>
 	<target name="test" depends="build">
 	<junit fork="true" haltonfailure="yes">
 		<classpath>
