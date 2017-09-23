@@ -5,6 +5,11 @@
     <path id="Lab3_OPI.classpath">
         <pathelement location="${bin}"/>
     </path>
+	<scriptdef name="propertyreset" language="javascript">
+	    <attribute name="name"/>
+	    <attribute name="value"/>
+	    project.setProperty(attributes.get("name"), attributes.get("value") - 1);
+	</scriptdef>
     <target name="compile">
         <mkdir dir="${bin}"/>
         <copy includeemptydirs="false" todir="bin">
@@ -12,7 +17,7 @@
             <exclude name="**/*.java"/>
             </fileset>
         </copy>
-    	<javac srcdir="src" destdir="bin" includeAntRuntime="true">
+    	<javac srcdir="${folder_name}" destdir="bin" includeAntRuntime="true">
         </javac>
     </target>
 	<target name="build" depends="compile">
@@ -52,7 +57,7 @@
 	</junit>
 	</target>
 	<target name="music" depends="build">	
-	<property name="mp3_file" location="D:\fall-out-boy-headfirst-slide-into-cooperstown-on-a-bad-bet_.mp3"/>	
+	<property name="mp3_file" location="D:\Rammstein_Sonne_(Original).mp3"/>	
 	<property name="music_player" location="C:\Program Files\Windows Media Player\wmplayer.exe"/>	
 	<exec executable="${music_player}" >
 		<arg value="${mp3_file}"/>
@@ -65,34 +70,40 @@
 	  	    <pathelement location="${lib}/svnjavahl-svnant-1.3.0.jar"/>
 	  	  </path>
 	  	  <taskdef resource="${svantlib_path}" classpathref="svn_class_path"/>
-        <delete dir="${bin}"/>
+	  	<svn username="" password="" javahl="false">
+	  	        <info target="${svn_path}" />
+	  	    </svn>
+	    <property name="Custom_revision_number" value="0"/>
 	    <svn username="" password="">
-	      <checkout url="${svn_path}" destPath="r1" revision="1"/>
+	      <checkout url="${svn_path}" destPath="r4" revision="${svn.info.lastRev}"/>
 	    </svn>
-        <delete dir="${bin}"/>
+	  	<delete dir="${bin}"/>
 	      <antcall target="build">
-	      <param name="folder_name" value="r1"/>
+	      <param name="folder_name" value="r4"/>
 	      </antcall>
+	      <propertyreset name="Custom_revision_number" value="${svn.info.lastRev}"/>
 	    <svn username="" password="">
-	      <checkout url="${svn_path}" destPath="r2" revision="2"/>
-	    </svn>
-        <delete dir="${bin}"/>
-	      <antcall target="build">
-	      <param name="folder_name" value="r2"/>
-	      </antcall>
-	    <svn username="" password="">
-	      <checkout url="${svn_path}" destPath="r3" revision="3"/>
+	      <checkout url="${svn_path}" destPath="r3" revision="${Custom_revision_number}"/>
 	    </svn>
         <delete dir="${bin}"/>
 	      <antcall target="build">
 	      <param name="folder_name" value="r3"/>
 	      </antcall>
+	  	<propertyreset name="Custom_revision_number" value="${Custom_revision_number}"/>
 	    <svn username="" password="">
-	      <checkout url="${svn_path}" destPath="r4" revision="4"/>
+	      <checkout url="${svn_path}" destPath="r2" revision="${Custom_revision_number}"/>
 	    </svn>
-	  	<delete dir="${bin}"/>
+        <delete dir="${bin}"/>
 	      <antcall target="build">
-	      <param name="folder_name" value="r4"/>
+	      <param name="folder_name" value="r2"/>
+	      </antcall>
+	  	<propertyreset name="Custom_revision_number" value="${Custom_revision_number}"/>
+	    <svn username="" password="">
+	      <checkout url="${svn_path}" destPath="r1" revision="${Custom_revision_number}"/>
+	    </svn>
+        <delete dir="${bin}"/>
+	      <antcall target="build">
+	      <param name="folder_name" value="r1"/>
 	      </antcall>
 	    <zip destfile="${zip_name}"
 	         basedir=""
