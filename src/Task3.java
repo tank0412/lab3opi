@@ -25,18 +25,25 @@ public static Stack mystack = new Stack();
     scanner.close();
     mystack.push(new Double(0));
     mystack.push(new Double(0));
+    
     mystack.push(new Double(2));
     mystack.push(new Double(3));
+    
     mystack.push(new Double(3));
     mystack.push(new Double(-5));
+    
     mystack.push(new Double(-4));
     mystack.push(new Double(-3));
+    
     mystack.push(new Double(4));
     mystack.push(new Double(5));
-    mystack.push(new Double(-5));
+    
+    mystack.push(new Double(-4.666));
     mystack.push(new Double(4));
+    
     mystack.push(new Double(1));
     mystack.push(new Double(-2));
+    
     mystack.push(new Double(-3));
     mystack.push(new Double(-3));
     
